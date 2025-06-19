@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Volymberäkning för Container</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f4f8;
+    }
+    select, input, button {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1em;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+    }
+    .info, .resultat {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 1.2em;
+      }
+      select, input, button {
+        font-size: 1.1em;
+      }
+    }
+    }
+  </style>
+</head>
+<body>
+  <h2>Volymberäkning för Container</h2>
+
+  <label for="container">Välj containernummer:</label><br>
+  <select id="container" onchange="visaInfo()" size="10" style="width: 200px; max-height: 200px; overflow-y: auto;">
+    <option value="">-- Välj --</option>
+    <option value="72504">72504</option>
+<option value="72505">72505</option>
+<option value="72506">72506</option>
+<option value="72509">72509</option>
+<option value="72510">72510</option>
+<option value="72511">72511</option>
+<option value="72512">72512</option>
+<option value="B2973">B2973</option>
+<option value="B3866">B3866</option>
+<option value="B3898">B3898</option>
+<option value="Q30763">Q30763</option>
+<option value="Q30764">Q30764</option>
+<option value="Q50520">Q50520</option>
+<option value="Q70833">Q70833</option>
+<option value="Q70834">Q70834</option>
+<option value="Q70835">Q70835</option>
+<option value="Q71487">Q71487</option>
+<option value="Q71988">Q71988</option>
+<option value="Q72421">Q72421</option>
+<option value="Q72422">Q72422</option>
+<option value="S21004">S21004</option>
+<option value="S21005">S21005</option>
+<option value="S21007">S21007</option>
+<option value="S21008">S21008</option>
+<option value="S21009">S21009</option>
+<option value="S21026">S21026</option>
+<option value="S21028">S21028</option>
+<option value="S21029">S21029</option>
+<option value="S21030">S21030</option>
+<option value="S21031">S21031</option>
+<option value="S21032">S21032</option>
+<option value="S21062">S21062</option>
+<option value="S21063">S21063</option>
+<option value="S21093">S21093</option>
+<option value="S21097">S21097</option>
+<option value="S21103">S21103</option>
+<option value="S21104">S21104</option>
+<option value="S21105">S21105</option>
+<option value="S21106">S21106</option>
+<option value="S21110">S21110</option>
+<option value="S21112">S21112</option>
+<option value="S21117">S21117</option>
+<option value="S21122">S21122</option>
+<option value="S21123">S21123</option>
+<option value="S21125">S21125</option>
+<option value="S21128">S21128</option>
+<option value="S21130">S21130</option>
+<option value="S21131">S21131</option>
+<option value="S21132">S21132</option>
+<option value="S21133">S21133</option>
+<option value="S21139">S21139</option>
+<option value="S21140">S21140</option>
+<option value="S21141">S21141</option>
+<option value="S21146">S21146</option>
+<option value="S21149">S21149</option>
+<option value="S21150">S21150</option>
+<option value="S21151">S21151</option>
+<option value="S21174">S21174</option>
+<option value="S21195">S21195</option>
+<option value="S21196">S21196</option>
+<option value="S21213">S21213</option>
+<option value="S21214">S21214</option>
+<option value="S21217">S21217</option>
+<option value="S21218">S21218</option>
+<option value="S21224">S21224</option>
+<option value="S21227">S21227</option>
+<option value="S21236">S21236</option>
+<option value="S21237">S21237</option>
+<option value="S21238">S21238</option>
+<option value="S21281">S21281</option>
+<option value="S21282">S21282</option>
+<option value="S21283">S21283</option>
+<option value="S21315">S21315</option>
+<option value="S21316">S21316</option>
+<option value="S21338">S21338</option>
+<option value="S21339">S21339</option>
+<option value="S21340">S21340</option>
+<option value="S21342">S21342</option>
+<option value="S21350">S21350</option>
+<option value="S21351">S21351</option>
+<option value="S21352">S21352</option>
+<option value="S21386">S21386</option>
+<option value="S22038">S22038</option>
+<option value="S60013">S60013</option>
+<option value="S60014">S60014</option>
+<option value="S60016">S60016</option>
+<option value="S60017">S60017</option>
+<option value="S60018">S60018</option>
+<option value="S60019">S60019</option>
+<option value="S60020">S60020</option>
+<option value="S60021">S60021</option>
+<option value="S60063">S60063</option>
+<option value="S60066">S60066</option>
+<option value="S60067">S60067</option>
+<option value="S60068">S60068</option>
+<option value="S60069">S60069</option>
+<option value="S60070">S60070</option>
+<option value="S60071">S60071</option>
+<option value="S60106">S60106</option>
+<option value="S60107">S60107</option>
+<option value="S60108">S60108</option>
+<option value="S60141">S60141</option>
+<option value="S60151">S60151</option>
+<option value="S60152">S60152</option>
+<option value="S60162">S60162</option>
+<option value="S60163">S60163</option>
+<option value="S60164">S60164</option>
+<option value="S60165">S60165</option>
+<option value="S60167">S60167</option>
+<option value="S60168">S60168</option>
+<option value="S60187">S60187</option>
+<option value="S60189">S60189</option>
+<option value="S60190">S60190</option>
+<option value="S60191">S60191</option>
+<option value="S60192">S60192</option>
+<option value="S60193">S60193</option>
+<option value="S60194">S60194</option>
+<option value="S60195">S60195</option>
+<option value="S60196">S60196</option>
+<option value="S60198">S60198</option>
+<option value="S60199">S60199</option>
+<option value="S60289">S60289</option>
+<option value="S60311">S60311</option>
+<option value="S60422">S60422</option>
+<option value="S60423">S60423</option>
+<option value="S60424">S60424</option>
+<option value="S60431">S60431</option>
+<option value="S60439">S60439</option>
+<option value="S62067">S62067</option>
+<option value="S64125">S64125</option>
+<option value="S64141">S64141</option>
+  </select><br>
+
+  <div class="info" id="info"></div>
+
+  <hr style="margin-top: 30px;">
+
+  <label for="justering">Justering i cm (kan vara negativ):</label><br>
+  <input type="number" id="justering" /><br>
+
+  <button onclick="beraknaVolym()">Beräkna Volym</button>
+
+  <div class="resultat" id="resultat"></div>
+
+  <script>
+    function excelDateToString(serial) {
+      if (!serial) return "";
+      const excelEpoch = new Date(Date.UTC(1899, 11, 30));
+      const date = new Date(excelEpoch.getTime() + serial * 86400000);
+      return date.toISOString().split('T')[0];
+    }
+
+    const containrar = {
+  "72504": {
+    "langd": 6.16,
+    "bredd": 2.54,
+    "hojd": 2.86,
+    "datum_uppm\u00e4tning": 44805,
+    "giltig_tom": 45900,
+    "status": NaN,
+    "kubik": 44.748704
+  },
+  "72505": {
+    "langd": 6.16,
+    "bredd": 2.54,
+    "hojd": 2.86,
+    "datum_uppm\u00e4tning": 44805,
+    "giltig_tom": 45900,
+    "status": NaN,
+    "kubik": 44.748704
+  },
+  "72506": {
+    "langd": 6.16,
+    "bredd": 2.55,
+    "hojd": 2.86,
+    "datum_uppm\u00e4tning": 44805,
+    "giltig_tom": 45900,
+    "status": NaN,
+    "kubik": 44.924879999999995
+  },
+  "72509": {
+    "langd": 6.16,
+    "bredd": 2.56,
+    "hojd": 2.84,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.785664
+  },
+  "72510": {
+    "langd": 6.16,
+    "bredd": 2.54,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": 44775,
+    "giltig_tom": 45870,
+    "status": NaN,
+    "kubik": 45.061631999999996
+  },
+  "72511": {
+    "langd": 6.16,
+    "bredd": 2.55,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": 44775,
+    "giltig_tom": 45870,
+    "status": NaN,
+    "kubik": 45.081959999999995
+  },
+  "72512": {
+    "langd": 6.16,
+    "bredd": 2.56,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": 44775,
+    "giltig_tom": 45870,
+    "status": NaN,
+    "kubik": 45.258752
+  },
+  "B2973": {
+    "langd": 12.0,
+    "bredd": 2.49,
+    "hojd": 3.1,
+    "datum_uppm\u00e4tning": 45730,
+    "giltig_tom": 46825,
+    "status": "ZZJ430 Flissl\u00e4p 47",
+    "kubik": 92.62800000000001
+  },
+  "B3866": {
+    "langd": 12.79,
+    "bredd": 2.49,
+    "hojd": 2.95,
+    "datum_uppm\u00e4tning": 45524,
+    "giltig_tom": 46619,
+    "status": "GWK19T Flissl\u00e4p 57",
+    "kubik": 93.94894500000001
+  },
+  "B3898": {
+    "langd": 12.8,
+    "bredd": 2.49,
+    "hojd": 2.96,
+    "datum_uppm\u00e4tning": 45689,
+    "giltig_tom": NaN,
+    "status": "JDK15A Flissl\u00e4p 58",
+    "kubik": 94.34112
+  },
+  "Q30763": {
+    "langd": 6.83,
+    "bredd": 2.5,
+    "hojd": 2.93,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "HNW90H Flisbil 57",
+    "kubik": 50.02975
+  },
+  "Q30764": {
+    "langd": 12.81,
+    "bredd": 2.5,
+    "hojd": 3.0,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "YAC058 flissl\u00e4p 57",
+    "kubik": 96.07499999999999
+  },
+  "Q50520": {
+    "langd": 12.6,
+    "bredd": 2.47,
+    "hojd": 2.85,
+    "datum_uppm\u00e4tning": 44144,
+    "giltig_tom": 45239,
+    "status": "Q50520 CKP764 Flissl\u00e4p ",
+    "kubik": 88.6977
+  },
+  "Q70833": {
+    "langd": 6.15,
+    "bredd": 2.58,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.696960000000004
+  },
+  "Q70834": {
+    "langd": 6.14,
+    "bredd": 2.57,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": 44586,
+    "giltig_tom": 45681,
+    "status": NaN,
+    "kubik": 45.288025999999995
+  },
+  "Q70835": {
+    "langd": 6.15,
+    "bredd": 2.58,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.696960000000004
+  },
+  "Q71487": {
+    "langd": 6.9,
+    "bredd": 2.5,
+    "hojd": 2.89,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "KFW51C Flisbil 55",
+    "kubik": 49.8525
+  },
+  "Q71988": {
+    "langd": 6.8,
+    "bredd": 2.51,
+    "hojd": 2.86,
+    "datum_uppm\u00e4tning": 44074,
+    "giltig_tom": 45169,
+    "status": NaN,
+    "kubik": 48.81447999999999
+  },
+  "Q72421": {
+    "langd": 6.79,
+    "bredd": 2.5,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": 45020,
+    "giltig_tom": NaN,
+    "status": "ATH32E Bil 52",
+    "kubik": 48.718250000000005
+  },
+  "Q72422": {
+    "langd": 12.79,
+    "bredd": 2.5,
+    "hojd": 2.95,
+    "datum_uppm\u00e4tning": 45020,
+    "giltig_tom": NaN,
+    "status": "TGR69T Sl\u00e4p 52",
+    "kubik": 94.32625
+  },
+  "S21004": {
+    "langd": 5.94,
+    "bredd": 2.56,
+    "hojd": 2.69,
+    "datum_uppm\u00e4tning": 44092,
+    "giltig_tom": 45187,
+    "status": NaN,
+    "kubik": 40.905216
+  },
+  "S21005": {
+    "langd": 5.95,
+    "bredd": 2.48,
+    "hojd": 2.75,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld Magnus Fransson 2024-09-01",
+    "kubik": 40.579
+  },
+  "S21007": {
+    "langd": 5.95,
+    "bredd": 2.48,
+    "hojd": 2.75,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 40.579
+  },
+  "S21008": {
+    "langd": 5.94,
+    "bredd": 2.45,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Sunes D\u00e4ck\u00e5tervinningscontainer",
+    "kubik": 39.43863
+  },
+  "S21009": {
+    "langd": 5.94,
+    "bredd": 2.45,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Sunes D\u00e4ckf\u00f6rvaring ",
+    "kubik": 39.43863
+  },
+  "S21026": {
+    "langd": 5.95,
+    "bredd": 2.43,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.182535
+  },
+  "S21028": {
+    "langd": 5.95,
+    "bredd": 2.43,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.182535
+  },
+  "S21029": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": 44587,
+    "giltig_tom": 45682,
+    "status": NaN,
+    "kubik": 39.678816000000005
+  },
+  "S21030": {
+    "langd": 5.95,
+    "bredd": 2.44,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.198600000000006
+  },
+  "S21031": {
+    "langd": 5.93,
+    "bredd": 2.44,
+    "hojd": 2.73,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.500916
+  },
+  "S21032": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 (Auktion)",
+    "kubik": 39.678816000000005
+  },
+  "S21062": {
+    "langd": 5.95,
+    "bredd": 2.43,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 (Auktion)",
+    "kubik": 39.32712000000001
+  },
+  "S21063": {
+    "langd": 5.95,
+    "bredd": 2.43,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.32712000000001
+  },
+  "S21093": {
+    "langd": 5.95,
+    "bredd": 2.45,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": 44092,
+    "giltig_tom": 45187,
+    "status": "Uthyrd Torsnet fr\u00e5n 2022-10-06",
+    "kubik": 38.92192500000001
+  },
+  "S21097": {
+    "langd": 5.9,
+    "bredd": 2.48,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.067440000000005
+  },
+  "S21103": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.68,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.095304
+  },
+  "S21104": {
+    "langd": 5.95,
+    "bredd": 2.47,
+    "hojd": 2.64,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.79876000000001
+  },
+  "S21105": {
+    "langd": 5.94,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": 43966,
+    "giltig_tom": 45061,
+    "status": NaN,
+    "kubik": 38.565450000000006
+  },
+  "S21106": {
+    "langd": 5.92,
+    "bredd": 2.45,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.16080000000001
+  },
+  "S21110": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.949425999999995
+  },
+  "S21112": {
+    "langd": 5.91,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.079284
+  },
+  "S21117": {
+    "langd": 5.94,
+    "bredd": 2.46,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.722860000000004
+  },
+  "S21122": {
+    "langd": 5.94,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.277656
+  },
+  "S21123": {
+    "langd": 5.94,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": "Sm\u00e5landslogistik Hultsfred",
+    "kubik": 39.277656
+  },
+  "S21125": {
+    "langd": 5.92,
+    "bredd": 2.43,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 38.984976
+  },
+  "S21128": {
+    "langd": 5.93,
+    "bredd": 2.47,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44587,
+    "giltig_tom": 45682,
+    "status": "Skrotad 2025-06-18 kn\u00e4ckt ram",
+    "kubik": 39.693641
+  },
+  "S21130": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.500525
+  },
+  "S21131": {
+    "langd": 5.93,
+    "bredd": 2.44,
+    "hojd": 2.64,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld Magnus Fransson 2024-09-01",
+    "kubik": 38.198688
+  },
+  "S21132": {
+    "langd": 5.94,
+    "bredd": 2.46,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.015108000000005
+  },
+  "S21133": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.69,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.081665
+  },
+  "S21139": {
+    "langd": 5.94,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.565450000000006
+  },
+  "S21140": {
+    "langd": 5.95,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.63037500000001
+  },
+  "S21141": {
+    "langd": 5.95,
+    "bredd": 2.44,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.76306
+  },
+  "S21146": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.63,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Sunes D\u00e4ck\u00e5tervinningscontainer",
+    "kubik": 38.209955
+  },
+  "S21149": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.63,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.209955
+  },
+  "S21150": {
+    "langd": 5.93,
+    "bredd": 2.47,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2018-06-18",
+    "kubik": 39.107757
+  },
+  "S21151": {
+    "langd": 5.93,
+    "bredd": 2.49,
+    "hojd": 2.66,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.276762000000005
+  },
+  "S21174": {
+    "langd": 5.95,
+    "bredd": 2.47,
+    "hojd": 2.74,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "B\u00f6rjes F\u00f6rvaringscontainer",
+    "kubik": 40.26841000000001
+  },
+  "S21195": {
+    "langd": 5.96,
+    "bredd": 2.4,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.19168
+  },
+  "S21196": {
+    "langd": 5.92,
+    "bredd": 2.42,
+    "hojd": 2.77,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.684128
+  },
+  "S21213": {
+    "langd": 6.2,
+    "bredd": 2.61,
+    "hojd": 2.9,
+    "datum_uppm\u00e4tning": 43333,
+    "giltig_tom": 44428,
+    "status": NaN,
+    "kubik": 46.9278
+  },
+  "S21214": {
+    "langd": 6.19,
+    "bredd": 2.6,
+    "hojd": 2.91,
+    "datum_uppm\u00e4tning": 43333,
+    "giltig_tom": 44428,
+    "status": "Gr\u00f6n, S\u00e5ld Stefanssons 2025-02-13",
+    "kubik": 46.833540000000006
+  },
+  "S21217": {
+    "langd": 6.19,
+    "bredd": 2.6,
+    "hojd": 2.91,
+    "datum_uppm\u00e4tning": 43333,
+    "giltig_tom": 44428,
+    "status": NaN,
+    "kubik": 46.833540000000006
+  },
+  "S21218": {
+    "langd": 6.19,
+    "bredd": 2.6,
+    "hojd": 2.91,
+    "datum_uppm\u00e4tning": 43333,
+    "giltig_tom": 44428,
+    "status": "Gr\u00f6n, S\u00e5ld Stefanssons 2025-02-13",
+    "kubik": 46.833540000000006
+  },
+  "S21224": {
+    "langd": 5.93,
+    "bredd": 2.44,
+    "hojd": 2.66,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.488072
+  },
+  "S21227": {
+    "langd": 5.94,
+    "bredd": 2.42,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.099456
+  },
+  "S21236": {
+    "langd": 5.94,
+    "bredd": 2.41,
+    "hojd": 2.8,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": NaN,
+    "kubik": 40.08312
+  },
+  "S21237": {
+    "langd": 5.94,
+    "bredd": 2.39,
+    "hojd": 2.79,
+    "datum_uppm\u00e4tning": 44623,
+    "giltig_tom": 45718,
+    "status": NaN,
+    "kubik": 39.60851400000001
+  },
+  "S21238": {
+    "langd": 5.95,
+    "bredd": 2.39,
+    "hojd": 2.8,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": NaN,
+    "kubik": 39.8174
+  },
+  "S21281": {
+    "langd": 5.96,
+    "bredd": 2.42,
+    "hojd": 2.74,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Trestendals Container",
+    "kubik": 39.519568
+  },
+  "S21282": {
+    "langd": 5.94,
+    "bredd": 2.41,
+    "hojd": 2.73,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Trestendals Container",
+    "kubik": 39.081042000000004
+  },
+  "S21283": {
+    "langd": 5.96,
+    "bredd": 2.42,
+    "hojd": 2.74,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Trestendals Container",
+    "kubik": 39.519568
+  },
+  "S21315": {
+    "langd": 6.19,
+    "bredd": 2.45,
+    "hojd": 2.92,
+    "datum_uppm\u00e4tning": 44586,
+    "giltig_tom": 45681,
+    "status": NaN,
+    "kubik": 44.283260000000006
+  },
+  "S21316": {
+    "langd": 6.17,
+    "bredd": 2.44,
+    "hojd": 2.94,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.261112
+  },
+  "S21338": {
+    "langd": 6.15,
+    "bredd": 2.57,
+    "hojd": 2.84,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.88762
+  },
+  "S21339": {
+    "langd": 6.15,
+    "bredd": 2.57,
+    "hojd": 2.84,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.88762
+  },
+  "S21340": {
+    "langd": 6.15,
+    "bredd": 2.57,
+    "hojd": 2.84,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.88762
+  },
+  "S21342": {
+    "langd": 5.95,
+    "bredd": 2.56,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 41.126400000000004
+  },
+  "S21350": {
+    "langd": 6.15,
+    "bredd": 2.58,
+    "hojd": 2.82,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.74494
+  },
+  "S21351": {
+    "langd": 6.15,
+    "bredd": 2.58,
+    "hojd": 2.82,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.74494
+  },
+  "S21352": {
+    "langd": 6.15,
+    "bredd": 2.58,
+    "hojd": 2.82,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 44.74494
+  },
+  "S21386": {
+    "langd": 5.92,
+    "bredd": 2.45,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": NaN,
+    "kubik": 39.450880000000005
+  },
+  "S22038": {
+    "langd": 12.69,
+    "bredd": 2.5,
+    "hojd": 2.95,
+    "datum_uppm\u00e4tning": 44517,
+    "giltig_tom": 45612,
+    "status": "CLP02S Sl\u00e4p 51",
+    "kubik": 93.58875
+  },
+  "S60013": {
+    "langd": 5.92,
+    "bredd": 2.44,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.289856
+  },
+  "S60014": {
+    "langd": 5.95,
+    "bredd": 2.44,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Joakim Lennebrink (auktion)",
+    "kubik": 39.198600000000006
+  },
+  "S60016": {
+    "langd": 5.94,
+    "bredd": 2.43,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.116682000000004
+  },
+  "S60017": {
+    "langd": 5.91,
+    "bredd": 2.48,
+    "hojd": 2.69,
+    "datum_uppm\u00e4tning": 43966,
+    "giltig_tom": 45061,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.426792
+  },
+  "S60018": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.69,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.241181999999995
+  },
+  "S60019": {
+    "langd": 5.94,
+    "bredd": 2.45,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.85651000000001
+  },
+  "S60020": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2023-06-02 Fr\u00f6dinge timber",
+    "kubik": 39.38706
+  },
+  "S60021": {
+    "langd": 5.94,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2020-06-04",
+    "kubik": 39.277656
+  },
+  "S60063": {
+    "langd": 5.92,
+    "bredd": 2.39,
+    "hojd": 2.77,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 39.192176
+  },
+  "S60066": {
+    "langd": 5.94,
+    "bredd": 2.57,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "S\u00e5ld 2024-09-20 Egon (auktion)",
+    "kubik": 41.21766
+  },
+  "S60067": {
+    "langd": 5.95,
+    "bredd": 2.55,
+    "hojd": 2.72,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 41.2692
+  },
+  "S60068": {
+    "langd": 5.93,
+    "bredd": 2.55,
+    "hojd": 2.68,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2024-01-10 Astbrant",
+    "kubik": 40.525619999999996
+  },
+  "S60069": {
+    "langd": 5.93,
+    "bredd": 2.47,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Sunes D\u00e4ck\u00e5tervinningscontainer",
+    "kubik": 39.693641
+  },
+  "S60070": {
+    "langd": 5.94,
+    "bredd": 2.46,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2024-01-10 Astbrant",
+    "kubik": 39.453480000000006
+  },
+  "S60071": {
+    "langd": 5.94,
+    "bredd": 2.46,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2024-10-15 Kungsg\u00e5rden",
+    "kubik": 39.453480000000006
+  },
+  "S60106": {
+    "langd": 5.96,
+    "bredd": 2.41,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2019-04-11",
+    "kubik": 38.78172
+  },
+  "S60107": {
+    "langd": 5.95,
+    "bredd": 2.4,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2019-04-11",
+    "kubik": 38.556
+  },
+  "S60108": {
+    "langd": 5.94,
+    "bredd": 2.4,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 37.7784
+  },
+  "S60141": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.500525
+  },
+  "S60151": {
+    "langd": 6.0,
+    "bredd": 2.41,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.042
+  },
+  "S60152": {
+    "langd": 5.96,
+    "bredd": 2.4,
+    "hojd": 2.67,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 38.19168
+  },
+  "S60162": {
+    "langd": 5.93,
+    "bredd": 2.58,
+    "hojd": 2.68,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 41.002392
+  },
+  "S60163": {
+    "langd": 5.94,
+    "bredd": 2.38,
+    "hojd": 2.79,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.442788
+  },
+  "S60164": {
+    "langd": 5.96,
+    "bredd": 2.39,
+    "hojd": 2.8,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.88432
+  },
+  "S60165": {
+    "langd": 5.94,
+    "bredd": 2.38,
+    "hojd": 2.79,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.442788
+  },
+  "S60167": {
+    "langd": 5.94,
+    "bredd": 2.38,
+    "hojd": 2.79,
+    "datum_uppm\u00e4tning": 44139,
+    "giltig_tom": 45234,
+    "status": NaN,
+    "kubik": 39.442788
+  },
+  "S60168": {
+    "langd": 5.93,
+    "bredd": 2.39,
+    "hojd": 2.79,
+    "datum_uppm\u00e4tning": 44623,
+    "giltig_tom": 45718,
+    "status": NaN,
+    "kubik": 39.541833000000004
+  },
+  "S60187": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.73,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.662805000000006
+  },
+  "S60189": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.73,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2024-01-10 Astbrant",
+    "kubik": 39.662805000000006
+  },
+  "S60190": {
+    "langd": 5.93,
+    "bredd": 2.46,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2024-10-15 Kungsg\u00e5rden",
+    "kubik": 39.532938
+  },
+  "S60191": {
+    "langd": 5.94,
+    "bredd": 2.46,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44645,
+    "giltig_tom": 45740,
+    "status": "S\u00e5ld 2024-09-20 Jonas Borg (Auktion)",
+    "kubik": 39.599604
+  },
+  "S60192": {
+    "langd": 5.91,
+    "bredd": 2.46,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44623,
+    "giltig_tom": 45718,
+    "status": NaN,
+    "kubik": 39.399606
+  },
+  "S60193": {
+    "langd": 5.95,
+    "bredd": 2.43,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.182535
+  },
+  "S60194": {
+    "langd": 5.94,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.277656
+  },
+  "S60195": {
+    "langd": 5.93,
+    "bredd": 2.45,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.22695
+  },
+  "S60196": {
+    "langd": 5.95,
+    "bredd": 2.44,
+    "hojd": 2.7,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.198600000000006
+  },
+  "S60198": {
+    "langd": 5.92,
+    "bredd": 2.48,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": 44645,
+    "giltig_tom": 45740,
+    "status": "S\u00e5ld 2024-09-20 (Auktion)",
+    "kubik": 39.787136
+  },
+  "S60199": {
+    "langd": 5.93,
+    "bredd": 2.44,
+    "hojd": 2.71,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 39.211532
+  },
+  "S60289": {
+    "langd": 5.91,
+    "bredd": 2.45,
+    "hojd": 2.65,
+    "datum_uppm\u00e4tning": "S\u00e5ld",
+    "giltig_tom": "S\u00e5ld",
+    "status": "S\u00e5ld 2023-07 Fr\u00f6dinge timber",
+    "kubik": 38.370675000000006
+  },
+  "S60311": {
+    "langd": 12.49,
+    "bredd": 2.5,
+    "hojd": 2.91,
+    "datum_uppm\u00e4tning": 43488,
+    "giltig_tom": 44583,
+    "status": "DPJ154 sidtippsl\u00e4p",
+    "kubik": 90.86475000000002
+  },
+  "S60422": {
+    "langd": 6.13,
+    "bredd": 2.56,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.195264
+  },
+  "S60423": {
+    "langd": 6.13,
+    "bredd": 2.56,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.195264
+  },
+  "S60424": {
+    "langd": 6.13,
+    "bredd": 2.56,
+    "hojd": 2.88,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.195264
+  },
+  "S60431": {
+    "langd": 5.93,
+    "bredd": 2.43,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": "Svart testcontainer",
+    "kubik": 41.356413
+  },
+  "S60439": {
+    "langd": 6.15,
+    "bredd": 2.57,
+    "hojd": 2.87,
+    "datum_uppm\u00e4tning": NaN,
+    "giltig_tom": NaN,
+    "status": NaN,
+    "kubik": 45.361785000000005
+  },
+  "S62067": {
+    "langd": 6.17,
+    "bredd": 2.56,
+    "hojd": 2.84,
+    "datum_uppm\u00e4tning": 44630,
+    "giltig_tom": 45725,
+    "status": NaN,
+    "kubik": 44.858368
+  },
+  "S64125": {
+    "langd": 6.15,
+    "bredd": 2.59,
+    "hojd": 2.85,
+    "datum_uppm\u00e4tning": 44741,
+    "giltig_tom": 45836,
+    "status": NaN,
+    "kubik": 45.396225
+  },
+  "S64141": {
+    "langd": 5.96,
+    "bredd": 2.46,
+    "hojd": 2.68,
+    "datum_uppm\u00e4tning": 43966,
+    "giltig_tom": 45061,
+    "status": NaN,
+    "kubik": 39.293088000000004
+  }
+};
+
+    function visaInfo() {
+      const containerNr = document.getElementById('container').value.trim();
+      const infoRuta = document.getElementById('info');
+
+      if (containrar[containerNr]) {
+        const d = containrar[containerNr];
+        infoRuta.innerHTML = `
+          <strong>Mått</strong><br>
+          Längd: ${d.langd} m<br>
+          Bredd: ${d.bredd} m<br>
+          Höjd: ${d.hojd} m<br><br>
+          <strong>Övrig information</strong><br>
+          Datum uppmätning: ${excelDateToString(d.datum_uppmätning)}<br>
+          Giltig t.o.m: ${excelDateToString(d.giltig_tom)}<br>
+          Status/övr info: ${d.status}<br>
+          Ursprungsvolym: ${d.kubik.toFixed(2)} m³
+        `;
+      } else {
+        infoRuta.textContent = '';
+      }
+    }
+
+    function beraknaVolym() {
+      const containerNr = document.getElementById('container').value.trim();
+      const justeringCm = parseFloat(document.getElementById('justering').value);
+      const resultatRuta = document.getElementById('resultat');
+
+      if (!containerNr || !containrar[containerNr]) {
+        resultatRuta.textContent = 'Välj ett giltigt containernummer.';
+        return;
+      }
+
+      const data = containrar[containerNr];
+      const justeringMeter = justeringCm / 100;
+      const justeradHojd = data.hojd + justeringMeter;
+      const volym = data.langd * data.bredd * justeradHojd;
+
+      resultatRuta.textContent = 'Beräknad volym: ' + volym.toFixed(2) + ' m³';
+    }
+  </script>
+</body>
+</html>
