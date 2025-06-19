@@ -45,7 +45,7 @@
   <hr style="margin-top: 30px;">
 
   <label for="justering">Justering i cm (kan vara negativ):</label><br>
-  <input type="number" id="justering" inputmode="decimal" step="any" autocomplete="off" enterkeyhint="done" /><br>
+  <input type="text" id="justering" inputmode="numeric" pattern="-?[0-9]+([.,][0-9]+)?" autocomplete="off" enterkeyhint="done" /><br>
 
   <button onclick="beraknaVolym()">Beräkna Volym</button>
 
@@ -156,7 +156,8 @@
 
     function beraknaVolym() {
       const containerNr = document.getElementById('container').value.trim();
-      const justeringCm = parseFloat(document.getElementById('justering').value);
+      const inputVal = document.getElementById('justering').value.replace(',', '.');
+      const justeringCm = parseFloat(inputVal);
       const resultatRuta = document.getElementById('resultat');
 
       if (!containerNr || !containrar[containerNr]) {
