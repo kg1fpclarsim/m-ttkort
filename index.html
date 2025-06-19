@@ -45,7 +45,7 @@
   <hr style="margin-top: 30px;">
 
   <label for="justering">Justering i cm (kan vara negativ):</label><br>
-  <input type="number" id="justering" inputmode="decimal" /><br>
+  <input type="text" id="justering" inputmode="decimal" pattern="[0-9]*[.,]?[0-9]*" autocomplete="off" /><br>
 
   <button onclick="beraknaVolym()">Beräkna Volym</button>
 
